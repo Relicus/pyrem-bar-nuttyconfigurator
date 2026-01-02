@@ -1,0 +1,116 @@
+<div class="settings-container" data-section="game-tweaks">
+    <div class="settings-header">
+        <h2>Game Tweaks</h2>
+        <label class="control-toggle" title="Switch between Difficulty Mode (auto-managed) and Custom Mode (manual sliders)">
+            <input type="checkbox" id="control-mode-toggle" data-default-checked="false">
+            <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-state" aria-live="polite"></span>
+        </label>
+    </div>
+    <div id="options-form-columns">
+        <div class="options-column" id="left-column">
+            <p>Loading configuration data...</p>
+        </div>
+        <div class="options-column" id="right-column"></div>
+    </div>
+    <div class="action-buttons-container with-copy">
+        <div class="action-buttons-group">
+            <button id="copy-game-tweaks-btn" class="copy-button" title="Copy current HP tweak slots only">Copy HP Only</button>
+        </div>
+        <div class="action-buttons-group">
+            <button class="section-reset-btn action-button" data-section="game-tweaks">Reset</button>
+            <button class="section-clear-btn action-button" data-section="game-tweaks">None</button>
+        </div>
+    </div>
+</div>
+
+<div class="settings-container" data-section="available-tweaks">
+    <div class="settings-header">
+        <h2>Available Tweaks</h2>
+    </div>
+    <div id="dynamic-tweaks-container">
+        <p style="color: #888;">Scanning tweak files...</p>
+    </div>
+    <div class="action-buttons-container">
+        <button class="section-reset-btn action-button" data-section="available-tweaks">Reset</button>
+        <button class="section-clear-btn action-button" data-section="available-tweaks">None</button>
+    </div>
+</div>
+
+<div class="settings-container" data-section="multipliers">
+    <div class="settings-header">
+        <h2>Game Multipliers</h2>
+    </div>
+    <div id="multipliers-container">
+        <div class="multipliers-grid">
+            <div class="multiplier-section">
+                <h3>Resource & Build Multipliers</h3>
+                <div id="resource-multipliers"></div>
+            </div>
+            <div class="multiplier-section">
+                <h3>Raptor Settings</h3>
+                <div id="raptor-multipliers"></div>
+            </div>
+        </div>
+    </div>
+    <div class="action-buttons-container with-copy">
+        <div class="action-buttons-group">
+            <button id="copy-game-multipliers-btn" class="copy-button" title="Copy current multiplier commands">Copy Multipliers Only</button>
+        </div>
+        <div class="action-buttons-group">
+            <button class="section-reset-btn action-button" data-section="multipliers">Reset</button>
+        </div>
+    </div>
+</div>
+
+<div id="custom-settings-container" class="settings-container" style="display: none;">
+    <h2>Custom Tweaks</h2>
+    <div id="custom-options-form-columns">
+        <div class="options-column" id="custom-left-column"></div>
+        <div class="options-column" id="custom-right-column"></div>
+    </div>
+    <div id="slot-warning-messages"></div>
+</div>
+
+<div class="output-container">
+    <h2>Generated Commands</h2>
+    <div id="library-status" class="library-status" style="display: none;"></div>
+    <div id="game-settings-section" class="command-output-section">
+        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 12px; width: 100%;">
+            <button class="copy-button" data-target="command-output-game" title="Base Configuration, Multipliers & Lobby Name">Copy Game Settings</button>
+        </div>
+        <textarea id="command-output-game" rows="5" readonly></textarea>
+    </div>
+    <div id="main-settings-section" class="command-output-section" style="display: none;">
+        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 12px; width: 100%;">
+            <button class="copy-button" data-target="command-output-main" title="Main Units and Defs (Slot 0)">Copy Main Settings</button>
+        </div>
+        <textarea id="command-output-main" rows="5" readonly></textarea>
+    </div>
+    <div id="tweak-sections"></div>
+
+    <div class="action-buttons-container" style="margin-top: 15px; border-top: 1px solid #444;">
+        <button id="rebuild-button" class="action-button" title="Retry loading the Lua minifier and rebuild outputs">Rebuild</button>
+        <!-- Sheet sync removed -->
+    </div>
+
+    <div class="lobby-name-output">
+        <button id="copy-lobby-name-btn" class="copy-button slot-copy-button" title="Copy lobby rename command">Copy</button>
+        <strong>Lobby Name:</strong> <span id="lobby-name-display">Loading...</span>
+    </div>
+
+    <div id="slot-usage-display">
+        <!-- Slot usage will be dynamically inserted here -->
+    </div>
+
+    <div class="command-output-section" style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%;">
+            <h3 style="margin: 0;">Reset All Slots (!bset 0 payload)</h3>
+            <button class="copy-button" data-target="reset-slots-output" title="Copy reset !bset commands (payload 0) for tweakdefs and tweakunits slots 0-9">Copy Reset Commands</button>
+        </div>
+        <p style="margin: 0; color: #aaa; width: 100%;">Paste these in lobby chat to clear every tweakdefs/tweakunits slot (0-9) with an explicit `0` payload. Slots disappear on rehost; this just wipes the current room.</p>
+        <textarea id="reset-slots-output" rows="6" readonly style="width: 100%; box-sizing: border-box;"></textarea>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<p>Save your custom tweaks for use in the configurator</p>
+<h2>Add Custom Tweaks</h2>
+
+<div class="custom-adders">
+    <form id="custom-lua-form" class="custom-add-form" data-source="lua">
+        <h3>Add Custom Lua</h3>
+        <label for="custom-lua-desc">Description:</label>
+        <input type="text" id="custom-lua-desc" data-field="desc" placeholder="e.g., Super Fast Tanks" required>
+
+        <label for="custom-lua-type">Type:</label>
+        <select id="custom-lua-type" data-field="type">
+            <option value="tweakdefs">tweakdefs</option>
+            <option value="tweakunits">tweakunits</option>
+        </select>
+
+        <label for="custom-lua-code">Lua Code:</label>
+        <textarea id="custom-lua-code" data-field="code" placeholder="Paste raw Lua. Will be minified and encoded." required></textarea>
+
+        <p class="custom-helper">Lua input is minified, encoded, and limited to ~9000 characters before encoding to fit the 13k slot cap.</p>
+        <button type="submit">Add Custom Lua</button>
+    </form>
+
+    <form id="custom-base64-form" class="custom-add-form" data-source="base64">
+        <h3>Add Custom Base64</h3>
+        <label for="custom-base64-desc">Description:</label>
+        <input type="text" id="custom-base64-desc" data-field="desc" placeholder="e.g., Drop in pre-encoded tweak" required>
+
+        <label for="custom-base64-type">Type:</label>
+        <select id="custom-base64-type" data-field="type">
+            <option value="tweakdefs">tweakdefs</option>
+            <option value="tweakunits">tweakunits</option>
+        </select>
+
+        <label for="custom-base64-code">Tweak Code (Base64URL):</label>
+        <textarea id="custom-base64-code" data-field="code" placeholder="Paste your base64url encoded tweak code here" required></textarea>
+
+        <p class="custom-helper">Base64 is kept as-is (13k max); a prefix comment like CUSTOM_01 slot 1 is added when slots are assigned.</p>
+        <button type="submit">Add Custom Base64</button>
+    </form>
+</div>
+
+<h2>Saved Tweaks</h2>
+<table id="custom-tweaks-table">
+    <thead>
+        <tr><th>Tweak</th><th>Type/Source</th><th>Code</th><th>Actions</th></tr>
+    </thead>
+    <tbody></tbody>
+</table>

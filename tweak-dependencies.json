@@ -1,0 +1,32 @@
+{
+  "roots": ["MAIN_DEFS", "MAIN_UNITS"],
+  "system_prefix": ["HP_MULTIPLIERS"],
+  "deps": {
+    "MAIN_DEFS": [],
+    "MAIN_UNITS": [],
+    "HP_MULTIPLIERS": ["MAIN_DEFS", "MAIN_UNITS"],
+    "CROSS_FACTION": [],
+    "T3_ECO": ["T3_BUILDERS"],
+    "T4_ECO": ["T3_ECO", "T3_BUILDERS"],
+    "T3_BUILDERS": [],
+    "UNIT_LAUNCHERS": [],
+    "LRPC": [],
+    "LEGENDARY_PULSAR": ["T3_BUILDERS"],
+    "LEGENDARY_BULWARK": ["T3_BUILDERS"],
+    "LEGENDARY_BASTION": ["T3_BUILDERS"],
+    "T4_AIR": [],
+    "RAGNAROK": ["T3_BUILDERS"],
+    "CALAMITY": ["T3_BUILDERS"],
+    "STARFALL": ["T3_BUILDERS"],
+    "BASTION": ["T3_BUILDERS"],
+    "EPIC_ELYSIUM": ["T3_BUILDERS"],
+    "FORTRESS": ["T3_BUILDERS"],
+    "MEGA_NUKE": [],
+    "MINI_BOSSES": [],
+    "EXP_WAVE": [],
+    "ARMADA_COMMANDER": [],
+    "CORTEX_COMMANDER": [],
+    "LEGION_COMMANDER": [],
+    "EVO_XP": ["ARMADA_COMMANDER", "CORTEX_COMMANDER", "LEGION_COMMANDER"]
+  }
+}

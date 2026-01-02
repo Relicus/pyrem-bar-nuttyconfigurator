@@ -1,0 +1,17 @@
+{
+  "description": "Dynamic slot distribution - no hardcoded assignments, fully incremental allocation",
+  "slot_limits": {
+    "target_chars": 11000,
+    "warning_chars": 12000,
+    "max_chars": 13000,
+    "max_lines": 600,
+    "comment": "Spring engine hard limit: 13KB per slot"
+  },
+  "allocation_mode": "dynamic_incremental",
+  "notes": {
+    "slot_0": "Reserved for Main tweaks (Units_Main.lua, Defs_Main.lua) and HP multipliers",
+    "slots_1_to_9": "Dynamically allocated based on user selections using FFD algorithm",
+    "algorithm": "First-Fit-Decreasing with incremental slot assignment",
+    "no_hardcoding": "All slots are assigned dynamically at runtime"
+  }
+}

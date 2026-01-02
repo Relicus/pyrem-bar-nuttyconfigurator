@@ -1,0 +1,382 @@
+{
+  "dynamic_tweaks": {
+    "MAIN_DEFS": {
+      "display": "Main Gameplay Tweaks (Defs)",
+      "description": "Core gameplay tweaks and improvements (definitions)",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_Main.lua",
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable Main Gameplay Tweaks",
+          "markers": {
+            "start": "-- MAIN_DEFS_START",
+            "end": "-- MAIN_DEFS_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "left"
+    },
+    "MAIN_UNITS": {
+      "display": "Main Gameplay Tweaks (Units)",
+      "description": "Core gameplay tweaks and improvements (units)",
+      "slot_type": "tweakunits",
+      "source_file": "tweaks/Units_Main.lua",
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable Main Unit Tweaks",
+          "markers": {
+            "start": "-- MAIN_UNITS_START",
+            "end": "-- MAIN_UNITS_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "right"
+    },
+    "NuttyB_Evolving_Commanders": {
+      "display": "NuttyB Evolving Commanders",
+      "description": "Enable evolving commanders for all factions (Armada, Cortex, Legion)",
+      "slot_type": "tweakunits",
+      "column": "left",
+      "options": [
+        {
+          "id": "ARMADA_COMMANDER",
+          "label": "Armada Commander (Evolving)",
+          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Armada.lua",
+          "markers": {
+            "start": "-- ARMADA_COMMANDER_START",
+            "end": "-- ARMADA_COMMANDER_END"
+          },
+          "default": true
+        },
+        {
+          "id": "CORTEX_COMMANDER",
+          "label": "Cortex Commander (Evolving)",
+          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Cortex.lua",
+          "markers": {
+            "start": "-- CORTEX_COMMANDER_START",
+            "end": "-- CORTEX_COMMANDER_END"
+          },
+          "default": true
+        },
+        {
+          "id": "LEGION_COMMANDER",
+          "label": "Legion Commander (Evolving)",
+          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Legion.lua",
+          "markers": {
+            "start": "-- LEGION_COMMANDER_START",
+            "end": "-- LEGION_COMMANDER_END"
+          },
+          "default": true
+        },
+        {
+          "id": "EVO_XP",
+          "label": "Evo XP (Auto)",
+          "source_file": "tweaks/Units_EVO_XP.lua",
+          "markers": {
+            "start": "-- EVO_XP_START",
+            "end": "-- EVO_XP_END"
+          },
+          "default": false,
+          "hidden": true,
+          "auto_enable": true
+        }
+      ]
+    },
+    "Cross_Faction_T2": {
+      "display": "Cross Faction T2 Units",
+      "description": "Enables cross-faction T2 units (70% taxed versions)",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_Cross_Faction_T2.lua",
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable Cross-Faction T2 (All Factions)",
+          "markers": {
+            "start": "-- CROSS_FACTION_START",
+            "end": "-- CROSS_FACTION_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "right"
+    },
+    "T3_ECO": {
+      "display": "T3 Eco",
+      "description": "Tier 3 economy structures and upgrades",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_T3_Eco.lua",
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable T3 Economy Buildings",
+          "markers": {
+            "start": "-- T3_ECO_START",
+            "end": "-- T3_ECO_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "left"
+    },
+    "T4_ECO": {
+      "display": "T4 Eco",
+      "description": "T4 cold energy converters and fusion reactors - safe non-explosive eco units",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_T4_Eco.lua",
+      "dependencies": ["T3_ECO"],
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable T4 Economy Buildings",
+          "markers": {
+            "start": "-- T4_ECO_START",
+            "end": "-- T4_ECO_END"
+          },
+          "default": false
+        }
+      ],
+      "column": "left"
+    },
+    "T3_BUILDERS": {
+      "display": "T3 Builder Units",
+      "description": "Tier 3 construction units and taxed factories",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_T3_Builders.lua",
+      "dependencies": ["T3_ECO"],
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable T3 Builders & Taxed Factories",
+          "markers": {
+            "start": "-- T3_BUILDERS_START",
+            "end": "-- T3_BUILDERS_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "right"
+    },
+    "UNIT_LAUNCHERS": {
+      "display": "Unit Launchers",
+      "description": "Buildings that launch units (Meatball, Assimilator, etc.)",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_Unit_Launchers.lua",
+      "dependencies": ["MAIN_DEFS"],
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable Unit Launchers",
+          "markers": {
+            "start": "-- UNIT_LAUNCHERS_START",
+            "end": "-- UNIT_LAUNCHERS_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "left"
+    },
+    "LRPC_v2": {
+      "display": "LRPC Rebalance v2",
+      "description": "Rebalanced long-range plasma cannons (Bertha, Intimidator, Legion LRPC)",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Units_LRPC_v2.lua",
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable LRPC Rebalance",
+          "markers": {
+            "start": "-- LRPC_START",
+            "end": "-- LRPC_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "right"
+    },
+    "T4_Defenses": {
+      "display": "T4 Defense Structures",
+      "description": "Experimental tier 4 defensive buildings - select which to enable",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_T4_Defenses.lua",
+      "options": [
+        {
+          "id": "pulsar",
+          "label": "Legendary Pulsar (Armada) - Devastating rapid-fire tachyon bolts",
+          "markers": {
+            "start": "-- LEGENDARY_PULSAR_START",
+            "end": "-- LEGENDARY_PULSAR_END"
+          },
+          "default": true
+        },
+        {
+          "id": "bulwark",
+          "label": "Legendary Bulwark (Cortex) - Heavy plasma defense cannon",
+          "markers": {
+            "start": "-- LEGENDARY_BULWARK_START",
+            "end": "-- LEGENDARY_BULWARK_END"
+          },
+          "default": true
+        },
+        {
+          "id": "bastion",
+          "label": "Legendary Bastion (Legion) - Advanced defensive structure",
+          "markers": {
+            "start": "-- LEGENDARY_BASTION_START",
+            "end": "-- LEGENDARY_BASTION_END"
+          },
+          "default": true
+        }
+      ],
+      "column": "left"
+    },
+    "T4_Air": {
+      "display": "T4 Air Units Rework",
+      "description": "Reworked tier 4 aircraft",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_T4_Air.lua",
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable T4 Air Rework",
+          "markers": {
+            "start": "-- T4_AIR_START",
+            "end": "-- T4_AIR_END"
+          },
+          "default": false
+        }
+      ],
+      "column": "right"
+    },
+    "T4_EPICS": {
+      "display": "T4 Epics",
+      "description": "Massive legendary units for each faction - select which to enable",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_T4_Epics.lua",
+      "dependencies": ["T3_BUILDERS"],
+      "options": [
+        {
+          "id": "ragnarok",
+          "label": "EPIC RAGNAROK",
+          "markers": {
+            "start": "-- RAGNAROK_START",
+            "end": "-- RAGNAROK_END"
+          },
+          "default": true
+        },
+        {
+          "id": "calamity",
+          "label": "EPIC CALAMITY",
+          "markers": {
+            "start": "-- CALAMITY_START",
+            "end": "-- CALAMITY_END"
+          },
+          "default": true
+        },
+        {
+          "id": "starfall",
+          "label": "EPIC STARFALL",
+          "markers": {
+            "start": "-- STARFALL_START",
+            "end": "-- STARFALL_END"
+          },
+          "default": true
+        },
+        {
+          "id": "bastion",
+          "label": "EPIC BASTION",
+          "markers": {
+            "start": "-- BASTION_START",
+            "end": "-- BASTION_END"
+          },
+          "default": true
+        },
+        {
+          "id": "elysium",
+          "label": "EPIC ELYSIUM",
+          "markers": {
+            "start": "-- EPIC_ELYSIUM_START",
+            "end": "-- EPIC_ELYSIUM_END"
+          },
+          "default": true
+        },
+        {
+          "id": "fortress",
+          "label": "EPIC FORTRESS",
+          "markers": {
+            "start": "-- FORTRESS_START",
+            "end": "-- FORTRESS_END"
+          },
+          "default": true
+        },
+        {
+          "id": "buildoptions",
+          "label": "Add Epics to Builder Units (Auto-enabled with any Epic)",
+          "markers": {
+            "start": "-- EPICS_BUILDOPTIONS_START",
+            "end": "-- EPICS_BUILDOPTIONS_END"
+          },
+          "default": true,
+          "auto_enable": true,
+          "hidden": true
+        }
+      ],
+      "column": "left"
+    },
+    "Mega_Nuke": {
+      "display": "Mega Nuke",
+      "description": "Enhanced nuclear weapons with massive AOE",
+      "slot_type": "tweakdefs",
+      "source_file": "tweaks/Defs_Mega_Nuke.lua",
+      "options": [
+        {
+          "id": "enable_all",
+          "label": "Enable Mega Nuke",
+          "markers": {
+            "start": "-- MEGA_NUKE_START",
+            "end": "-- MEGA_NUKE_END"
+          },
+          "default": false
+        }
+      ],
+      "column": "right"
+    },
+    "Raptor_Wave_Mode": {
+      "display": "Raptor Wave Mode",
+      "description": "Choose between standard Mini Bosses or Experimental Wave Challenge",
+      "slot_type": "tweakdefs",
+      "type": "dropdown",
+      "column": "left",
+      "default": "mini_bosses",
+      "dropdown_options": [
+        {
+          "value": "none",
+          "label": "None",
+          "source_file": null,
+          "markers": null
+        },
+        {
+          "value": "mini_bosses",
+          "label": "Mini Bosses",
+          "source_file": "tweaks/Defs_Waves_Mini_Bosses.lua",
+          "markers": {
+            "start": "-- MINI_BOSSES_START",
+            "end": "-- MINI_BOSSES_END"
+          }
+        },
+        {
+          "value": "experimental_wave",
+          "label": "Experimental Wave Challenge",
+          "source_file": "tweaks/Defs_Waves_Experimental_Wave_Challenge.lua",
+          "markers": {
+            "start": "-- EXP_WAVE_START",
+            "end": "-- EXP_WAVE_END"
+          }
+        }
+      ]
+    }
+  }
+}

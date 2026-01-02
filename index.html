@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NuttyB Configurator</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23000'/><text x='8' y='12' font-size='10' text-anchor='middle' fill='%23fff'>B</text></svg>">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Space+Mono:wght@700&display=swap">
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luaparse@0.3.1/luaparse.min.js" defer></script>
+
+    <script>
+        window.BUILD_VERSION = "v2.32";
+        if (window.BUILD_VERSION === "v2.32") {
+            window.BUILD_VERSION = "dev";
+        }
+        window.ASSET_CACHE_BUSTER = window.BUILD_VERSION === "dev"
+            ? Date.now().toString()
+            : window.BUILD_VERSION;
+    </script>
+
+    <!-- Custom Lua Minifier (replaces luamin with aggressive C-style minifier) -->
+    <script src="js/lua-minifier.js?v=v2.32" defer></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css?v=v2.32">
+
+    <!-- Metadata Handler -->
+    <script src="js/metadata.js?v=v2.32"></script>
+
+    <!-- Module files (load before main.js) -->
+    <script src="js/config-loader.js?v=v2.32"></script>
+    <script src="js/multiplier-handler.js?v=v2.32"></script>
+    <script src="js/difficulty-manager.js?v=v2.32"></script>
+    <script src="js/ui-generator.js?v=v2.32"></script>
+    <script src="js/ui-renderer.js?v=v2.32"></script>
+    <script src="js/custom-tweaks.js?v=v2.32"></script>
+    <script src="js/helpers/slot-utils.js?v=v2.32"></script>
+    <script src="js/helpers/priority-utils.js?v=v2.32"></script>
+    <script src="js/helpers/defaults.js?v=v2.32"></script>
+
+    <script src="js/command-builder.js?v=v2.32"></script>
+
+    <script src="js/slot-scanner.js?v=v2.32"></script>
+    <script src="js/slot-packer.js?v=v2.32"></script>
+    <script src="js/event-handlers.js?v=v2.32"></script>
+    <script src="js/output-manager.js?v=v2.32"></script>
+    <script src="js/utils.js?v=v2.32"></script>
+
+
+    <!-- Dynamic Tweaks Handler removed (replaced by slot packer) -->
+
+    <!-- Partial Loader -->
+    <script>
+        const ASSET_CACHE_BUSTER = window.ASSET_CACHE_BUSTER || Date.now().toString();
+        const UPDATE_CHECK_THRESHOLD_MS = 60 * 60 * 1000;
+
+        function withAssetVersion(url) {
+            const resolvedUrl = new URL(url, window.location.href);
+            resolvedUrl.searchParams.set('v', ASSET_CACHE_BUSTER);
+            return resolvedUrl.toString();
+        }
+
+        function withLiveCheck(url) {
+            const resolvedUrl = new URL(url, window.location.href);
+            resolvedUrl.searchParams.set('ts', Date.now().toString());
+            return resolvedUrl.toString();
+        }
+
+        // Load HTML partials
+        async function loadPartial(url, targetId) {
+            try {
+                const response = await fetch(withAssetVersion(url));
+                if (!response.ok) throw new Error(`Failed to load ${url}`);
+                const html = await response.text();
+                document.getElementById(targetId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading partial ${url}:`, error);
+                document.getElementById(targetId).innerHTML = `<p style="color: red;">Failed to load ${url}</p>`;
+            }
+        }
+
+        function showUpdateBanner(newVersion) {
+            const banner = document.getElementById('update-banner');
+            const message = document.getElementById('update-banner-message');
+            if (!banner || !message) return;
+            message.textContent = newVersion
+                ? `Update available (${newVersion}). Refresh to load it.`
+                : 'Update available. Refresh to load it.';
+            banner.classList.remove('hidden');
+        }
+
+        async function checkForUpdate() {
+            const currentVersion = window.BUILD_VERSION || 'dev';
+            if (currentVersion === 'dev') return;
+
+            try {
+                const response = await fetch(withLiveCheck('version.json'), { cache: 'no-store' });
+                if (!response.ok) {
+                    return;
+                }
+                const data = await response.json();
+                if (data && data.version && data.version !== currentVersion) {
+                    showUpdateBanner(data.version);
+                }
+            } catch (error) {
+                console.warn('Update check failed:', error);
+            }
+        }
+
+        let lastInactiveAt = Date.now();
+        let updateCheckInFlight = false;
+
+        function markInactive() {
+            lastInactiveAt = Date.now();
+        }
+
+        function maybeCheckForUpdate() {
+            if (updateCheckInFlight) return;
+            const inactiveMs = Date.now() - lastInactiveAt;
+            if (inactiveMs < UPDATE_CHECK_THRESHOLD_MS) return;
+
+            updateCheckInFlight = true;
+            checkForUpdate().finally(() => {
+                updateCheckInFlight = false;
+            });
+        }
+
+        // Load all partials when DOM is ready
+        document.addEventListener('DOMContentLoaded', async () => {
+            const buildInfoElement = document.getElementById('build-info');
+            if (buildInfoElement) {
+                const version = buildInfoElement.dataset.version || 'dev';
+                const dateText = buildInfoElement.dataset.date || 'Dev build';
+                const iso = buildInfoElement.dataset.iso || '';
+
+                const versionNode = buildInfoElement.querySelector('.build-version');
+                const dateNode = buildInfoElement.querySelector('.build-date');
+
+                if (versionNode) versionNode.textContent = version;
+                if (dateNode) {
+                    dateNode.textContent = dateText;
+                    if (iso) dateNode.dataset.iso = iso;
+                }
+            }
+
+            const refreshButton = document.getElementById('update-refresh-button');
+            if (refreshButton) {
+                refreshButton.addEventListener('click', () => {
+                    const url = new URL(window.location.href);
+                    url.searchParams.set('v', Date.now().toString());
+                    window.location.replace(url.toString());
+                });
+            }
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    markInactive();
+                } else {
+                    maybeCheckForUpdate();
+                }
+            });
+
+            window.addEventListener('focus', maybeCheckForUpdate);
+            window.addEventListener('blur', markInactive);
+
+            await Promise.all([
+                loadPartial('partials/config-tab.html', 'config-tab'),
+                loadPartial('partials/custom-tab.html', 'custom-tab'),
+                loadPartial('partials/links-tab.html', 'links-tab')
+            ]);
+
+            // Load main JavaScript after partials are loaded
+            const script = document.createElement('script');
+            script.src = withAssetVersion('js/main.js');
+            script.onload = () => {
+                // Trigger initialization manually since DOMContentLoaded already fired
+                if (typeof initializeApp === 'function') {
+                    initializeApp();
+                }
+            };
+            document.body.appendChild(script);
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header-bar">
+            <h1>Pyrem - NuttyB Configurator</h1>
+            <div id="build-info" aria-label="Build metadata" data-version="v2.32" data-date="01/01/2026, 06:52:59 PM PST" data-iso="2026-01-02T02:52:59.619Z">
+                <span class="build-label">Build</span>
+                <span class="build-version">v2.32</span>
+                <span class="build-separator">&bull;</span>
+                <span class="build-date">01/01/2026, 06:52:59 PM PST</span>
+            </div>
+        </div>
+
+        <div id="update-banner" class="update-banner hidden" role="status" aria-live="polite">
+            <div id="update-banner-message" class="update-banner-message">Update available. Refresh to load it.</div>
+            <button id="update-refresh-button" class="action-button" type="button">Refresh</button>
+        </div>
+
+        <div class="tabs">
+
+            <button class="tab-button active" data-tab="config">Configuration</button>
+            <button class="tab-button" data-tab="custom">Custom</button>
+            <button class="tab-button" data-tab="links">Widgets/Links</button>
+        </div>
+
+        <!-- Tab Content (loaded dynamically) -->
+        <div id="config-tab" class="tab-content active">
+            <p>Loading...</p>
+        </div>
+
+        <div id="custom-tab" class="tab-content">
+            <p>Loading...</p>
+        </div>
+
+        <div id="links-tab" class="tab-content">
+            <p>Loading...</p>
+        </div>
+
+    </div>
+</body>
+</html>

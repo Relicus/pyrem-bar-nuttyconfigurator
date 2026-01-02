@@ -1,0 +1,101 @@
+{
+  "tweaks": {
+    "Cross_Faction_T2": {
+      "display": "T2 Cross Faction",
+      "description": "Enables cross-faction T2 units (70% taxed versions)",
+      "category": "Units",
+      "author": "TetrisCo"
+    },
+    "Experimental_Wave_Challenge": {
+      "display": "Experimental Wave Challenge",
+      "description": "Custom raptor squad configurations for wave challenges",
+      "category": "Raptors",
+      "author": "BackBash"
+    },
+    "Main": {
+      "display": "Main Tweaks",
+      "description": "Core gameplay tweaks and improvements",
+      "category": "Core",
+      "author": "ChrispyNut, BackBash"
+    },
+    "Mini_Bosses": {
+      "display": "Mini Bosses",
+      "description": "Adds mini boss units to the game",
+      "category": "Units",
+      "author": "Various"
+    },
+    "T3_Eco": {
+      "display": "T3 Economy Buildings",
+      "description": "Tier 3 economy structures and upgrades",
+      "category": "Economy",
+      "author": "Community"
+    },
+    "T4_Defenses": {
+      "display": "T4 Defense Structures",
+      "description": "Experimental tier 4 defensive buildings",
+      "category": "Defenses",
+      "author": "Community"
+    },
+    "NuttyB_Evolving_Commanders": {
+      "display": "NuttyB Evolving Commanders",
+      "description": "Combined evolving commander definitions for Armada, Cortex, and Legion",
+      "category": "Commanders",
+      "author": "ChrispyNut, BackBash"
+    },
+    "EVO_XP": {
+      "display": "Evo XP Inheritance",
+      "description": "Adds XP inheritance for evolving commanders",
+      "category": "Commanders",
+      "author": "Community"
+    },
+    "T4_EPICS": {
+      "display": "T4 Epics (Ragnarok, Calamity, etc.)",
+      "description": "Massive epic units: Ragnarok, Calamity, Starfall, Bastion, Sentinel, Fortress",
+      "category": "Units",
+      "author": "Altwaal"
+    },
+    "LRPC_v2": {
+      "display": "T2 LRPC v2",
+      "description": "Rebalanced long-range plasma cannons (Bertha, Intimidator, Legion LRPC)",
+      "category": "Balance",
+      "author": "NuttyB"
+    },
+    "Mega_Nuke": {
+      "display": "Mega Nuke",
+      "description": "Enhanced nuclear weapons",
+      "category": "Weapons",
+      "author": "Community"
+    },
+    "T3_Builders": {
+      "display": "T3 Builder Units",
+      "description": "Tier 3 construction units",
+      "category": "Builders",
+      "author": "Community"
+    },
+    "T4_Air": {
+      "display": "T4 Air",
+      "description": "Reworked tier 4 aircraft",
+      "category": "Air",
+      "author": "Community"
+    },
+    "Unit_Launchers": {
+      "display": "Unit Launchers",
+      "description": "Buildings that launch units",
+      "category": "Structures",
+      "author": "Community"
+    }
+  },
+  "categories": {
+    "Core": { "order": 1, "color": "#4caf50" },
+    "Commanders": { "order": 2, "color": "#2196f3" },
+    "Units": { "order": 3, "color": "#ff9800" },
+    "Economy": { "order": 4, "color": "#ffc107" },
+    "Defenses": { "order": 5, "color": "#f44336" },
+    "Weapons": { "order": 6, "color": "#9c27b0" },
+    "Air": { "order": 7, "color": "#00bcd4" },
+    "Builders": { "order": 8, "color": "#795548" },
+    "Balance": { "order": 9, "color": "#607d8b" },
+    "Raptors": { "order": 10, "color": "#e91e63" },
+    "Structures": { "order": 11, "color": "#3f51b5" }
+  }
+}
