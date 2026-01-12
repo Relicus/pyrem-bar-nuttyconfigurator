@@ -1,7 +1,7 @@
 -- Mini Bosses
 -- Decoded from tweakdata.txt line 3
 
---Mini Bosses v2f
+--Mini Bosses v2g
 -- Authors: RCore
 -- docs.google.com/spreadsheets/d/1QSVsuAAMhBrhiZdTihVfSCwPzbbZWDLCtXWP23CU0ko
 -- MINI_BOSSES_START
@@ -38,6 +38,8 @@ l=math.min(10,g/1.3*0.9)
 local g=20;
 local m=10*(1.06^math.max(0,math.min(f,g)-8))
 local g=math.max(0,f-g)
+-- Dampened Curve Logic:
+g = (g <= 80) and (0.6 * g - g * g / 270) or (24.3 + (g - 80) * 0.15)
 local g=m+g;
 local g=math.ceil(l*g)
 local g=k*100+g;
