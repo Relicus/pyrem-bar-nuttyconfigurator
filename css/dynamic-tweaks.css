@@ -1,0 +1,113 @@
+/* Dynamic Tweaks - File-level Checkboxes */
+.file-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.sections-info {
+    font-size: 0.85em;
+    color: var(--color-text-dim);
+    padding-left: 24px;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* Dynamic Tweaks - Nested Checkboxes */
+.dynamic-tweak-container {
+    border: 1px solid var(--color-border-soft);
+    border-radius: 5px;
+    padding: 6px;
+    margin-bottom: 5px;
+    background-color: var(--color-surface-strong);
+}
+
+.dynamic-tweak-header {
+    font-weight: bold;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.tweak-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.tweak-header-left label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.tweak-header-left:hover {
+    background-color: #2d2d2d;
+    padding: 4px;
+    margin: -4px;
+    border-radius: 4px;
+}
+
+.expand-button {
+    background-color: var(--color-hover);
+    border: 1px solid var(--color-border-soft);
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-accent);
+    transition: all 0.2s ease;
+}
+
+.expand-button:hover {
+    background-color: var(--color-input);
+    border-color: var(--color-accent);
+}
+
+.expand-button.collapsed::before {
+    content: '▸';
+}
+
+.expand-button.expanded::before {
+    content: '▾';
+}
+
+.dynamic-tweak-sub-options {
+    margin-left: 30px;
+    margin-top: 4px;
+    padding-left: 10px;
+    border-left: 2px solid var(--color-accent);
+}
+
+.dynamic-tweak-sub-options label {
+    margin-bottom: 2px;
+    font-size: 0.90em;
+}
+
+.dynamic-tweak-info {
+    font-size: 0.82em;
+    color: var(--color-text-dim);
+    margin-top: 4px;
+    margin-left: 30px;
+    padding: 4px 6px;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.tweak-display-name {
+    color: var(--color-text-body);
+    font-size: 1em;
+}

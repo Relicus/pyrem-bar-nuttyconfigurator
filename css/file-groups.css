@@ -1,0 +1,190 @@
+/* 2-Column Checkbox Layout */
+.checkbox-columns {
+    display: block;
+    column-count: 2;
+    column-gap: 15px;
+    margin: 15px 0;
+}
+
+/* File Group Styling - Compact and Modern */
+.file-group {
+    border: 1px solid var(--color-border-strong);
+    border-radius: 6px;
+    padding: 0;
+    background: linear-gradient(135deg, var(--color-panel) 0%, var(--color-surface-strong) 100%);
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    break-inside: avoid-column;
+    width: 100%;
+    animation: cardRise 0.35s ease-out;
+}
+
+.file-group.main-group {
+    background: linear-gradient(135deg, #1a2a1a 0%, #1f2d1f 100%);
+    border-color: var(--color-accent-strong);
+    opacity: 0.95;
+}
+
+.file-group.main-group .file-label {
+    color: #b6d9c0;
+    font-weight: 500;
+}
+
+.file-group.main-group input[type="checkbox"]:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.file-group:hover {
+    border-color: var(--color-border-soft);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
+}
+
+/* File Header - Parent Checkbox Row */
+.file-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: var(--color-surface-strong);
+    border-bottom: 1px solid var(--color-border-strong);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.file-header:hover {
+    background: var(--color-border);
+}
+
+.file-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.file-parent-checkbox {
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--color-accent);
+    width: 1.3em;
+    height: 1.3em;
+}
+
+.file-label {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-text-body);
+    font-size: 0.95em;
+    margin: 0;
+    flex: 1;
+}
+
+.file-label:hover {
+    color: var(--color-accent);
+}
+
+/* Expand Button - File Level */
+.file-header .expand-button {
+    background-color: transparent;
+    border: 1px solid var(--color-border-soft);
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-accent);
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.file-header .expand-button:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+}
+
+/* Children Container - Compact Nested Styling */
+.children-checkboxes {
+    margin: 0;
+    padding: 0 12px 0 40px;
+    background: #1f1f1f;
+    border-left: 2px solid var(--color-accent);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease, opacity 0.25s ease, padding 0.2s ease;
+    pointer-events: none;
+}
+
+.children-checkboxes.show {
+    max-height: 900px;
+    opacity: 1;
+    padding: 10px 12px 10px 40px;
+    pointer-events: auto;
+}
+
+/* Section Checkbox - Child Items */
+.section-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    margin: 2px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+    color: #c0c0c0;
+    font-size: 0.9em;
+}
+
+.section-checkbox:hover {
+    background-color: #2d2d2d;
+    color: var(--color-text-body);
+    transform: translateX(2px);
+}
+
+.section-checkbox input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--color-accent-hover);
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.section-checkbox span {
+    cursor: pointer;
+}
+
+/* Indeterminate state styling */
+.file-parent-checkbox:indeterminate {
+    accent-color: #7cd889;
+}
+
+/* Responsive: Stack on small screens */
+@media (max-width: 768px) {
+    .checkbox-columns {
+        column-count: 1;
+        column-gap: 12px;
+    }
+
+    .children-checkboxes {
+        padding: 8px 10px 8px 32px;
+    }
+
+    .file-header {
+        padding: 8px 10px;
+    }
+
+    .section-checkbox {
+        padding: 4px 6px;
+        font-size: 0.85em;
+    }
+}

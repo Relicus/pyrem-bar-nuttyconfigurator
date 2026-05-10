@@ -1,0 +1,31 @@
+.command-output-section {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: start;
+    margin-bottom: 10px;
+}
+.command-output-section h3 { margin-top: 0; margin-bottom: 5px; }
+.command-output-section textarea {
+    width: 100%; box-sizing: border-box; padding: 10px;
+    border: 1px solid var(--color-border-soft); border-radius: 4px;
+    font-family: monospace; white-space: pre-wrap; word-wrap: break-word;
+    resize: vertical; background-color: var(--color-panel); color: var(--color-text);
+}
+
+.lobby-name-output {
+    margin-top: 20px; padding: 10px; border: 1px dashed var(--color-border-soft);
+    background-color: var(--color-border); font-family: monospace; word-break: break-all;
+}
+
+.command-output-section-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.command-output-textarea {
+    width: 100%;
+}

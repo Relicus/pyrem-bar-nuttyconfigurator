@@ -1,0 +1,109 @@
+  .custom-adders {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+  }
+
+  .custom-add-form {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--color-border-soft);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, var(--color-surface) 0%, #242424 100%);
+      box-shadow: var(--shadow-sm);
+  }
+
+  .custom-add-form h3 {
+      grid-column: 1 / -1;
+      margin: 0 0 4px 0;
+  }
+
+  .custom-add-form label { text-align: right; padding-right: 10px; color: var(--color-text-body); }
+  .custom-add-form input, .custom-add-form select, .custom-add-form textarea {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #151515;
+      color: var(--color-text);
+      border: 1px solid var(--color-border-soft);
+      border-radius: var(--radius-sm);
+      padding: 7px 9px;
+      font-family: var(--font-body);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  .custom-add-form select {
+      padding-right: 32px;
+  }
+  .custom-add-form input:focus-visible, .custom-add-form select:focus-visible, .custom-add-form textarea:focus-visible {
+      border-color: var(--color-accent-hover);
+      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.18);
+      outline: none;
+  }
+  
+  .custom-add-form textarea { resize: vertical; min-height: 80px; font-family: var(--font-mono); }
+  .custom-add-form button {
+      grid-column: 2;
+      background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-accent-strong) 100%);
+      color: #fff;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition: background-color 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+      width: auto; 
+      justify-self: start; 
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+  .custom-add-form button:hover {
+      background: linear-gradient(180deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  .custom-add-form button:active {
+      transform: translateY(0);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+  .custom-add-form button:focus-visible {
+      outline: none;
+      box-shadow:
+          0 0 0 2px rgba(76, 175, 80, 0.25),
+          0 2px 0 rgba(0, 0, 0, 0.35),
+          0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .custom-helper {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: 0.9em;
+  }
+
+#slot-warning-messages p {
+    color: var(--color-text-dim);
+    text-align: left;
+    font-size: 0.9em;
+    margin: 10px 0 0 0;
+}
+.custom-option-type-display {
+    font-size: 0.85em;
+    color: var(--color-text-dim);
+    margin-left: 4px;
+}
+
+.custom-form-message {
+    margin: 8px 0 0;
+    font-size: 0.9rem;
+}
+
+.custom-form-message[data-variant="error"] {
+    color: #ff8d8d;
+}
+
+.custom-form-message[data-variant="success"] {
+    color: #8ddf8d;
+}

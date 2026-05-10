@@ -1,0 +1,6 @@
+{
+    "workspace.ignoreDir": [
+        "Units_*.lua",
+        "Defs_Waves_Experimental_Wave_Challenge.lua"
+    ]
+}

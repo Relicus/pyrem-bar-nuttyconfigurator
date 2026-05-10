@@ -1,0 +1,65 @@
+.slot-usage-card {
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.slot-usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    font-size: 0.9em;
+}
+
+.slot-usage-column {
+    color: var(--color-text-dim);
+    border-right: 1px solid var(--color-border-strong);
+    padding-right: 15px;
+}
+
+.slot-usage-column:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.slot-usage-header {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.slot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.slot-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.slot-row-text {
+    color: #ddd;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.slot-usage-none {
+    color: #666;
+}
+
+.slot-usage-total-ok {
+    color: #66ff66;
+}
+
+.slot-usage-total-warn {
+    color: #ffaa00;
+}
+
+.slot-usage-total-error {
+    color: #ff6666;
+}

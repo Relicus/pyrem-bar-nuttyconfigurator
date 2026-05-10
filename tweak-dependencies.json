@@ -1,0 +1,51 @@
+{
+  "identity_aliases": {
+    "tweaks": {
+      "MAIN": ["MAIN_DEFS", "MAIN_UNITS"],
+      "CROSS_FACTION_T2": ["CROSS_FACTION"],
+      "LRPC_V2": ["LRPC"],
+      "DOOM_MODE": ["Doom_Mode"],
+      "MINI_BOSSES": ["Mini_Bosses"]
+    },
+    "sections": {
+      "LEGENDARY_BASTION": ["BASTION"],
+      "EPIC_ELYSIUM": ["ELYSIUM"]
+    }
+  },
+  "roots": ["MAIN_DEFS", "MAIN_UNITS"],
+  "system_prefix": ["HP_MULTIPLIERS"],
+  "slot_groups": {
+      "EPICS": ["RAGNAROK", "CALAMITY"],
+      "EPICS_2": ["STARFALL"],
+      "EPICS_3": ["BASTION", "FORTRESS", "SENTINEL"]
+  },
+  "deps": {
+    "MAIN_DEFS": [],
+    "MAIN_UNITS": [],
+    "HP_MULTIPLIERS": ["MAIN_DEFS", "MAIN_UNITS"],
+    "CROSS_FACTION": [],
+    "T3_ECO": ["T3_BUILDERS"],
+    "T4_ECO": ["T3_ECO", "T3_BUILDERS"],
+    "T3_BUILDERS": [],
+    "UNIT_LAUNCHERS": ["MAIN_DEFS"],
+    "LRPC": [],
+    "LEGENDARY_PULSAR": ["T3_BUILDERS"],
+    "LEGENDARY_BULWARK": ["T3_BUILDERS"],
+    "LEGENDARY_BASTION": ["T3_BUILDERS"],
+    "T4_AIR": [],
+    "RAGNAROK": ["T3_BUILDERS"],
+    "CALAMITY": ["T3_BUILDERS"],
+    "STARFALL": ["T3_BUILDERS"],
+    "BASTION": ["T3_BUILDERS"],
+    "EPIC_ELYSIUM": ["T3_BUILDERS"],
+    "FORTRESS": ["T3_BUILDERS"],
+    "MEGA_NUKE": [],
+    "MINI_BOSSES": [],
+    "EXP_WAVE": [],
+    "DOOM_MODE": [],
+    "ARMADA_COMMANDER": [],
+    "CORTEX_COMMANDER": [],
+    "LEGION_COMMANDER": [],
+    "EVO_XP": ["ARMADA_COMMANDER", "CORTEX_COMMANDER", "LEGION_COMMANDER"]
+  }
+}
